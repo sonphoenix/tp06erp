@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_loan_template" model="ir.actions.report">
+            <field name="name">Loan Custom Report</field>
+            <field name="model">library.loan</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">my_library.report_loan</field>
+        </record>
+    </data>
+</odoo>

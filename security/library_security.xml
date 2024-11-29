@@ -1,0 +1,9 @@
+<odoo>
+    <record id="my_library.group_library_director" model="res.groups">
+        <field name="name">Library Director</field>
+    </record>
+
+    <record id="my_library.group_library_secretary" model="res.groups">
+        <field name="name">Library Secretary</field>
+    </record>
+</odoo>

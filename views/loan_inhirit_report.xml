@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_loan_inherit" inherit_id="my_library.report_loan">
+            <xpath expr="//th[text()='Nom Auteur']" position="before">
+                <th>Photo</th>
+            </xpath>
+
+           <xpath expr="//tr/td[span[@t-field='ligne.book_id.author_id.first_name']]" position="before">
+     <td>
+    <img 
+     t-att-src="'data:image/png;base64,' + ligne.book_id.author_id.photo.decode('utf-8')" 
+     style="width: 50px; height: 50px; border-radius: 25px; margin-right: 10px;" />
+    </td>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

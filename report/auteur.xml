@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report 
+            id="report_author" 
+            model="library.author" 
+            string="Author Report" 
+            report_type="qweb-pdf" 
+            name="my_library.report_author" 
+        />
+    <template id="report_author">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="author">
+                <t t-call="web.external_layout">
+                    <div class="page" style="background-color: #f4f4f4; padding: 20px;">
+                        <h2 style="color: #4CAF50; text-align: center; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">Author Details</h2>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <strong style="color: #2c3e50;">Full Name:</strong>
+                                <span t-field="author.first_name" style="color: #34495e;"/>
+                                <span t-field="author.name" style="color: #34495e;"/>
+                            </div>
+                            <div class="col-6">
+                                <strong style="color: #2c3e50;">Birth Date:</strong>
+                                <span t-field="author.birth_date" style="color: #34495e;"/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <strong style="color: #2c3e50;">Nationality:</strong>
+                                <span t-field="author.nationality" style="color: #34495e;"/>
+                            </div>
+                            <div class="col-6">
+                                <strong style="color: #2c3e50;">Gender:</strong>
+                                <span t-field="author.gender" style="color: #34495e;"/>
+                            </div>
+                        </div>
+                        <h3 class="mt-4" style="color: #3498db; border-top: 2px solid #3498db; padding-top: 10px;">Books List</h3>
+                        <table class="table table-bordered mt-2" style="background-color: #ffffff; border: 1px solid #ddd;">
+                            <thead style="background-color: #4CAF50; color: white;">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>ISBN</th>
+                                    <th>Language</th>
+                                    <th>Page Count</th>
+                                    <th>Cover Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="author.book_ids" t-as="book" style="color: #2c3e50;">
+                                    <td><span t-field="book.title"/></td>
+                                    <td><span t-field="book.isbn"/></td>
+                                    <td><span t-field="book.language"/></td>
+                                    <td><span t-field="book.page_count"/></td>
+                                    <td>
+                                        <span t-if="book.cover_image">
+                                            <img t-att-src="'data:image/png;base64,' + book.cover_image" align="left" width="50" height="50" style="margin:0px;padding:0px;"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

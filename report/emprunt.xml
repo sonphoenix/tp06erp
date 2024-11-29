@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_loan">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="loan">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="background-color: #f9f9f9; padding: 20px;">
+                            <h2 style="color: #ff6f61; text-align: center; border-bottom: 2px solid #ff6f61; padding-bottom: 10px;">Fiche de Prêt</h2>
+
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <strong style="color: #2c3e50;">Borrower:</strong>
+                                    <span t-field="loan.borrower_id.name" style="color: #34495e;"/>
+                                    <span t-field="loan.borrower_id.first_name" style="color: #34495e;"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong style="color: #2c3e50;">Status:</strong>
+                                    <span t-if="loan.returned == 'yes'" style="color: #27ae60;">Rendu</span>
+                                    <span t-else="" style="color: #c0392b;">En cours</span>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <strong style="color: #2c3e50;">Date Start:</strong>
+                                    <span t-field="loan.start_date" style="color: #34495e;"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong style="color: #2c3e50;">Date End:</strong>
+                                    <span t-field="loan.end_date" style="color: #34495e;"/>
+                                </div>
+                            </div>
+
+                            <h3 class="mt-4" style="color: #3498db; border-top: 2px solid #3498db; padding-top: 10px;">Livres Empruntés</h3>
+                            <table class="table table-bordered mt-2" style="background-color: #ffffff; border: 1px solid #ddd;">
+                                <thead style="background-color: #ff6f61; color: white;">
+                                    <tr>
+                                        <th>Nom Auteur</th>
+                                        <th>Titre</th>
+                                        <th>ISBN</th>
+                                        <th>Langue</th>
+                                        <th>Pages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="loan.loan_line_ids" t-as="ligne" style="color: #2c3e50;">
+                                        <td>
+                                            <span t-field="ligne.book_id.author_id.first_name"/>
+                                        </td>
+                                        <td><span t-field="ligne.book_id.title"/></td>
+                                        <td><span t-field="ligne.isbn"/></td>
+                                        <td><span t-field="ligne.language"/></td>
+                                        <td><span t-field="ligne.page_count"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

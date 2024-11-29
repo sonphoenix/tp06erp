@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_article_tree_inherit" model="ir.ui.view">
+        <field name="name">book.tree.inherit.library</field>
+        <field name="model">library.book</field>
+        <field name="inherit_id" ref="view_book_tree"/> 
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='page_count']" position="after">
+                <field name="universite"/>
+                <field name="laboratoire"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_article_form_inherit" model="ir.ui.view">
+        <field name="name">book.form.inherit.library</field>
+        <field name="model">library.book</field>
+        <field name="inherit_id" ref="view_book_form"/> 
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='page_count']" position="after">
+                <field name="universite"/>
+                <field name="laboratoire"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+        <record id="view_author_form_inherit" model="ir.ui.view">
+            <field name="name">library.author.form.inherit</field>
+            <field name="model">library.author</field>
+            <field name="inherit_id" ref="my_library.view_author_form"/> 
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='gender']" position="after">
+                    <field name="photo" widget="image" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

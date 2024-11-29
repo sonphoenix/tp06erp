@@ -1,0 +1,71 @@
+<odoo>
+    <!-- Main Menu Item -->
+    <menuitem id="menu_library_root" name="Library" sequence="1" />
+
+    <!-- Submenu for Authors -->
+    <menuitem id="menu_library_authors" name="Authors" parent="menu_library_root" sequence="2" />
+    <record id="action_library_authors" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="res_model">library.author</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_library_authors_action" parent="menu_library_authors"
+        action="action_library_authors" />
+
+    <!-- Submenu for Books -->
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root" sequence="3" />
+    <record id="action_library_books" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_library_books_action" parent="menu_library_books"
+        action="action_library_books" />
+
+    <menuitem id="menu_library_borrowers" name="Borrowers" parent="menu_library_root" sequence="4" />
+    <record id="action_library_borrowers" model="ir.actions.act_window">
+        <field name="name">Borrowers</field>
+        <field name="res_model">library.borrower</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_library_borrowers_action" parent="menu_library_borrowers"
+        action="action_library_borrowers" />
+
+
+    <menuitem id="menu_library_loans" name="Loans" parent="menu_library_root" sequence="5" />
+    <record id="action_library_loans" model="ir.actions.act_window">
+        <field name="name">Loans</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_library_loans_action" parent="menu_library_loans"
+        action="action_library_loans" />
+
+
+    <record id="action_library_loans" model="ir.actions.act_window">
+        <field name="name">Loans</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_library_ajouter" name="Ajouter" parent="menu_library_root"
+        action="action_empwizard" sequence="6" />
+    <record id="action_empwizard" model="ir.actions.act_window">
+        <field name="name">Ajouter</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_library_supprimer" name="Supprimer" parent="menu_library_root"
+        action="action_reset_borrowings_wizard" sequence="7"
+        groups="my_library.group_library_director" />
+    <record id="action_reset_borrowings_wizard" model="ir.actions.act_window">
+        <field name="name">Reset borrow</field>
+        <field name="res_model">library.resetwizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>
